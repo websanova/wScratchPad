@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Websanova Scratch Pad</title>
+    
+    <!-- jQuery -->
+    <script type="text/javascript" src="./inc/jquery.1.7.1.min.js"></script>
+
+    <!-- wScratchPad -->
+    <script type="text/javascript" src="./wScratchPad.js"></script>
+</head>
+<body>
+
+    <div id="wScratchPad" style="display:inline-block; position:relative; border:solid black 1px;"></div>
+
+	<div>
+		<a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> |
+		<a id="reset" href="javascript:reset();">reset</a> |
+		<a id="reset" href="javascript:reset_with_new_color();">reset with new color</a> |  
+		<a href="javascript:get_color();">get color</a> |
+		<a href="javascript:set_image_bg();">set image background</a> |
+		<a href="javascript:set_image_overlay();">set overlay image</a> | 
+		<a href="javascript:set_to_winner();">set to winner</a> |
+		<a href="javascript:change_size();">change size</a> 
+	</div>
+	<div>
+		percent scratched: <span id="percent_scratched"></span>
+	</div>
+
+    <script type="text/javascript">
+        var sp = $("#wScratchPad").wScratchPad({
+        	scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
+        	scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
+        	scratchUp: function(e, percent){$("#percent_scratched").html(percent)}
+        });
+
+		function set_to_winner()
+		{
+			sp.wScratchPad('width', '200');
+			sp.wScratchPad('image', './images/winner.png');
+			sp.wScratchPad('image2', './images/scratch-to-win.png');
+			sp.wScratchPad('reset');
+		}
+
+		function change_size()
+		{
+			sp.wScratchPad('size', '5');
+		}
+
+		function reset_to_defaults()
+		{
+			sp.wScratchPad('image', './images/slide1.jpg');
+			sp.wScratchPad('image2', null);
+			sp.wScratchPad('color', '#336699');
+			sp.wScratchPad('overlay', 'none');
+			sp.wScratchPad('size', '10');
+			sp.wScratchPad('reset');
+		}
+
+        function reset()
+        {
+        	sp.wScratchPad('reset');
+        }
+        
+        function reset_with_new_color()
+        {
+        	sp.wScratchPad('color', '#FF0000');
+        	sp.wScratchPad('image2', null);
+        	sp.wScratchPad('reset');
+        }
+        
+        function get_color()
+        {
+        	alert(sp.wScratchPad('color'));
+        }
+        
+        function set_image_bg()
+        {
+        	sp.wScratchPad('image', './images/slide2.jpg');
+        	sp.wScratchPad('reset');
+        }
+        
+        function set_image_overlay()
+        {
+        	sp.wScratchPad('image2', './images/slide3.jpg');
+        	sp.wScratchPad('reset');
+        }
+    </script>
+</body>
+</html>
