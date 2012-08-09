@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <div id="wScratchPad" style="display:inline-block; position:relative; border:solid black 1px;"></div>
+	<div id="wScratchPad" style="display:inline-block; position:relative; border:solid black 1px;"></div>
 
 	<div>
 		<a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> |
@@ -98,6 +98,13 @@
 			sp.wScratchPad('image2', './images/slide3.jpg');
 			sp.wScratchPad('reset');
 		}
+	</script>
+	
+	<!-- testing multiple scratch pads -->
+	<div id="wScratchPad1" style="display:inline-block; position:relative; border:solid black 1px;"></div>
+	
+	<script type="text/javascript">
+		$("#wScratchPad1").wScratchPad({});
 	</script>
 </body>
 </html>

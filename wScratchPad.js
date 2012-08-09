@@ -61,8 +61,7 @@
 			
 			elem.append(sp.generate());
 			
-			//we will need these in the mousemove event - we only need to get it once, so we do it here.
-			sp.canvas_offset = $(sp.canvas).offset();
+			//get number of pixels of canvas for percent calculations 
 			sp.pixels = sp.canvas.width * sp.canvas.height;
 			
 			elem.data('_wScratchPad', sp);
@@ -136,15 +135,19 @@
 				{
 					e.preventDefault();
 					e.stopPropagation();
+					
+					//reset canvas offset in case it has moved
+					$this.canvas_offset = $($this.canvas).offset();
+					
 					$this.scratch = true;
 					$this.scratchFunc(e, $this, 'Down');
 				});
 			}
 			else if(func == 'ScratchMove')
 			{
-				$(document).unbind('mousemove');
+				$(this.canvas).unbind('mousemove');
 				
-				$(document).bind(event, function(e)
+				$(this.canvas).bind(event, function(e)
 				{
 					e.preventDefault();
 					e.stopPropagation();
@@ -154,9 +157,9 @@
 			}
 			else if(func == 'ScratchUp')
 			{
-				$(document).unbind('mouseup');
+				$(this.canvas).unbind('mouseup');
 				
-				$(document).bind(event, function(e)
+				$(this.canvas).bind(event, function(e)
 				{
 					e.preventDefault();
 					e.stopPropagation();
