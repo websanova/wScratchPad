@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Websanova Scratch Pad</title>
-    
-    <!-- jQuery -->
-    <script type="text/javascript" src="./inc/jquery.1.7.1.min.js"></script>
+	
+	<meta CHARSET="UTF-8">
+	
+	<title>Websanova Scratch Pad</title>
 
-    <!-- wScratchPad -->
-    <script type="text/javascript" src="./wScratchPad.js"></script>
+	<!-- jQuery -->
+	<script type="text/javascript" src="./inc/jquery.1.7.1.min.js"></script>
+
+	<!-- wScratchPad -->
+	<script type="text/javascript" src="./wScratchPad.js"></script>
 </head>
 <body>
 
@@ -27,12 +30,22 @@
 		percent scratched: <span id="percent_scratched"></span>
 	</div>
 
-    <script type="text/javascript">
-        var sp = $("#wScratchPad").wScratchPad({
-        	scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
-        	scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
-        	scratchUp: function(e, percent){$("#percent_scratched").html(percent)}
-        });
+	<script type="text/javascript">
+		var sp = $("#wScratchPad").wScratchPad({
+			scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
+			scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
+			scratchUp: function(e, percent){$("#percent_scratched").html(percent)}
+		});
+
+		/*
+			//for custom event handlers - default are the below, but can be changed based on device.
+			
+			var sp_obj = sp.data('_wScratchPad');
+	
+			sp_obj.bind('mousedown', 'ScratchDown');
+			sp_obj.bind('mousemove', 'ScratchMove');
+			sp_obj.bind('mouseup', 'ScratchUp');
+		*/
 
 		function set_to_winner()
 		{
@@ -57,34 +70,34 @@
 			sp.wScratchPad('reset');
 		}
 
-        function reset()
-        {
-        	sp.wScratchPad('reset');
-        }
-        
-        function reset_with_new_color()
-        {
-        	sp.wScratchPad('color', '#FF0000');
-        	sp.wScratchPad('image2', null);
-        	sp.wScratchPad('reset');
-        }
-        
-        function get_color()
-        {
-        	alert(sp.wScratchPad('color'));
-        }
-        
-        function set_image_bg()
-        {
-        	sp.wScratchPad('image', './images/slide2.jpg');
-        	sp.wScratchPad('reset');
-        }
-        
-        function set_image_overlay()
-        {
-        	sp.wScratchPad('image2', './images/slide3.jpg');
-        	sp.wScratchPad('reset');
-        }
-    </script>
+		function reset()
+		{
+			sp.wScratchPad('reset');
+		}
+
+		function reset_with_new_color()
+		{
+			sp.wScratchPad('color', '#FF0000');
+			sp.wScratchPad('image2', null);
+			sp.wScratchPad('reset');
+		}
+		
+		function get_color()
+		{
+			alert(sp.wScratchPad('color'));
+		}
+
+		function set_image_bg()
+		{
+			sp.wScratchPad('image', './images/slide2.jpg');
+			sp.wScratchPad('reset');
+		}
+
+		function set_image_overlay()
+		{
+			sp.wScratchPad('image2', './images/slide3.jpg');
+			sp.wScratchPad('reset');
+		}
+	</script>
 </body>
 </html>

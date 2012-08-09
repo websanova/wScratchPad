@@ -115,31 +115,61 @@
 				.attr('width', this.settings.width + 'px')
 				.attr('height', this.settings.height + 'px')
 				.css({cursor: 'default'})
-				.mousedown(function(e)
+			)
+			
+			this.bind('mousedown', 'ScratchDown');
+			this.bind('mousemove', 'ScratchMove');
+			this.bind('mouseup', 'ScratchUp');
+			
+			return this.sp;
+		},
+		
+		bind: function(event, func)
+		{
+			var $this = this;
+			
+			if(func == 'ScratchDown')
+			{
+				$(this.canvas).unbind('mousedown');
+				
+				$(this.canvas).bind(event, function(e)
 				{
 					e.preventDefault();
 					e.stopPropagation();
 					$this.scratch = true;
 					$this.scratchFunc(e, $this, 'Down');
-				})
-			)
-
-			$(document)
-			.mousemove(function(e)
+				});
+			}
+			else if(func == 'ScratchMove')
 			{
-				if($this.scratch) $this.scratchFunc(e, $this, 'Move');
-			})
-			.mouseup(function(e)
-			{
-				//make sure we are in draw mode otherwise this will fire on any mouse up.
-				if($this.scratch)
+				$(document).unbind('mousemove');
+				
+				$(document).bind(event, function(e)
 				{
-					$this.scratch = false;
-					$this.scratchFunc(e, $this, 'Up');
-				}
-			});
+					e.preventDefault();
+					e.stopPropagation();
+					
+					if($this.scratch) $this.scratchFunc(e, $this, 'Move');
+				});
+			}
+			else if(func == 'ScratchUp')
+			{
+				$(document).unbind('mouseup');
+				
+				$(document).bind(event, function(e)
+				{
+					e.preventDefault();
+					e.stopPropagation();
+					
+					//make sure we are in draw mode otherwise this will fire on any mouse up.
+					if($this.scratch)
+					{
+						$this.scratch = false;
+						$this.scratchFunc(e, $this, 'Up');
+					}
+				});
+			}
 			
-			return this.sp;
 		},
 		
 		init: function()
@@ -209,8 +239,6 @@
 
 		scratchPercentage: function($this)
 		{
-			console.info($this.canvas.width)
-			
 			var hits = 0;
 			var imageData = $this.ctx.getImageData(0,0,$this.canvas.width,$this.canvas.height)
 			
