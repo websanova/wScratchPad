@@ -79,9 +79,10 @@
 		color		: '#336699',				// set scratch color - if image2 is not set uses color
 		overlay		: 'none',					// set the type of overlay effect 'none', 'lighter' - only used with color
 		size		: 10,						// set size of scratcher
-		scratchDown	: null,						// functions to call while scratching - returns event and percentage scratched
-		scratchUp	: null,
-		scratchMove	: null
+		scratchDown	: null,						// scratchDown callback
+		scratchUp	: null,						// scratchUp callback
+		scratchMove	: null,						// scratcMove callback
+		cursor		: null						// Set path to custom cursor
 	};
 	
 	function ScratchPad(settings)
@@ -108,12 +109,12 @@
 			
 			this.sp =
 			$('<div></div>')
-			.css({cursor: 'default', position: 'relative'})
+			.css({cursor: (this.settings.cursor ? 'url("' + this.settings.cursor + '"), default' : 'default'), position: 'relative'})
 			.append(
 				$(this.canvas)
 				.attr('width', this.settings.width + 'px')
 				.attr('height', this.settings.height + 'px')
-				.css({cursor: 'default'})
+				.css({cursor: (this.settings.cursor ? 'url("' + this.settings.cursor + '"), default' : 'default')})
 			)
 			
 			this.bind('mousedown', 'ScratchDown');
