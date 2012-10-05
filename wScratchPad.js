@@ -117,65 +117,65 @@
 				.attr('height', this.settings.height + 'px')
 			)
 			
-			this.bind('mousedown', 'ScratchDown');
-			this.bind('mousemove', 'ScratchMove');
-			this.bind('mouseup', 'ScratchUp');
+			$(this.canvas)
+			.mousedown(function(e)
+			{
+				e.preventDefault();
+				e.stopPropagation();
+				
+				//reset canvas offset in case it has moved
+				$this.canvas_offset = $($this.canvas).offset();
+				
+				$this.scratch = true;
+				$this.scratchFunc(e, $this, 'Down');
+			})
+			.mousemove(function(e)
+			{
+				e.preventDefault();
+				e.stopPropagation();
+				
+				if($this.scratch) $this.scratchFunc(e, $this, 'Move');
+			})
+			.mouseup(function(e)
+			{
+				e.preventDefault();
+				e.stopPropagation();
+				
+				//make sure we are in draw mode otherwise this will fire on any mouse up.
+				if($this.scratch)
+				{
+					$this.scratch = false;
+					$this.scratchFunc(e, $this, 'Up');
+				}
+			});
+
+			this.bindMobile();
 			
 			return this.sp;
 		},
 		
-		bind: function(event, func)
+		bindMobile: function()
 		{
-			var $this = this;
-			
-			if(func == 'ScratchDown')
+			this.sp.bind('touchstart touchmove touchend touchcancel', function ()
 			{
-				$(this.canvas).unbind('mousedown');
-				
-				$(this.canvas).bind(event, function(e)
+				var touches = event.changedTouches, first = touches[0], type = ""; 
+
+				switch (event.type)
 				{
-					e.preventDefault();
-					e.stopPropagation();
-					
-					//reset canvas offset in case it has moved
-					$this.canvas_offset = $($this.canvas).offset();
-					
-					$this.scratch = true;
-					$this.scratchFunc(e, $this, 'Down');
-				});
-			}
-			else if(func == 'ScratchMove')
-			{
-				$(this.canvas).unbind('mousemove');
-				
-				$(this.canvas).bind(event, function(e)
-				{
-					e.preventDefault();
-					e.stopPropagation();
-					
-					if($this.scratch) $this.scratchFunc(e, $this, 'Move');
-				});
-			}
-			else if(func == 'ScratchUp')
-			{
-				$(this.canvas).unbind('mouseup');
-				
-				$(this.canvas).bind(event, function(e)
-				{
-					e.preventDefault();
-					e.stopPropagation();
-					
-					//make sure we are in draw mode otherwise this will fire on any mouse up.
-					if($this.scratch)
-					{
-						$this.scratch = false;
-						$this.scratchFunc(e, $this, 'Up');
-					}
-				});
-			}
-			
+					case "touchstart": type = "mousedown"; break; 
+					case "touchmove": type = "mousemove"; break; 
+					case "touchend": type = "mouseup"; break; 
+					default: return;
+				}
+
+				var simulatedEvent = document.createEvent("MouseEvent"); 
+
+				simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+				first.target.dispatchEvent(simulatedEvent);
+				event.preventDefault();
+			});
 		},
-		
+
 		init: function()
 		{
 			this.sp.css('width', this.settings.width);
