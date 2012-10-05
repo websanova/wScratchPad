@@ -17,13 +17,13 @@
 	<div id="wScratchPad" style="display:inline-block; position:relative; border:solid black 1px;"></div>
 
 	<div>
-		<a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> |
-		<a id="reset" href="javascript:reset();">reset</a> |
-		<a id="reset" href="javascript:reset_with_new_color();">reset with new color</a> |  
-		<a href="javascript:get_color();">get color</a> |
-		<a href="javascript:set_image_bg();">set image background</a> |
+		<a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> | 
+		<a id="reset" href="javascript:reset();">reset</a> | 
+		<a id="reset" href="javascript:reset_with_new_color();">reset with new color</a> | 
+		<a href="javascript:get_color();">get color</a> | 
+		<a href="javascript:set_image_bg();">set image background</a> | 
 		<a href="javascript:set_image_overlay();">set overlay image</a> | 
-		<a href="javascript:set_to_winner();">set to winner</a> |
+		<a href="javascript:set_to_winner();">set to winner</a> | 
 		<a href="javascript:change_size();">change size</a> 
 	</div>
 	<div>
@@ -52,6 +52,7 @@
 			sp.wScratchPad('width', '200');
 			sp.wScratchPad('image', './images/winner.png');
 			sp.wScratchPad('image2', './images/scratch-to-win.png');
+			sp.wScratchPad('cursor', './cursors/coin.png');
 			sp.wScratchPad('reset');
 		}
 
@@ -104,7 +105,9 @@
 	<div id="wScratchPad1" style="display:inline-block; position:relative; border:solid black 1px;"></div>
 	
 	<script type="text/javascript">
-		$("#wScratchPad1").wScratchPad({});
+		$("#wScratchPad1").wScratchPad({
+			cursor:'./cursors/mario.png'
+		});
 	</script>
 </body>
 </html>

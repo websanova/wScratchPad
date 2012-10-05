@@ -21,25 +21,26 @@
 		}
 		else if(typeof option == 'string')
 		{
-			var data = this.data('_wScratchPad');
-			var hit = true;
+			var values = [];
 
-			if(data)
+			var elements = this.each(function()
 			{
-				if(option == 'reset') data.reset();
-				else
+				var data = $(this).data('_wScratchPad');
+
+				if(data)
 				{
-					if($.fn.wScratchPad.defaultSettings[option] !== undefined)
+					if(option === 'reset') data.reset();
+					else if($.fn.wScratchPad.defaultSettings[option] !== undefined)
 					{
-						if(settings !== undefined) data.settings[option] = settings;
-						else return data.settings[option];
+						if(settings !== undefined) { data.settings[option] = settings; }
+						else { values.push(data.settings[option]); }
 					}
-					else hit = false;
 				}
-			}
-			else hit = false;
-			
-			return hit;
+			});
+
+			if(values.length === 1) { return values[0]; }
+			if(values.length > 0) { return values; }
+			else { return elements; }
 		}
 		
 		settings = $.extend({}, $.fn.wScratchPad.defaultSettings, settings || {});
@@ -109,12 +110,11 @@
 			
 			this.sp =
 			$('<div></div>')
-			.css({cursor: (this.settings.cursor ? 'url("' + this.settings.cursor + '"), default' : 'default'), position: 'relative'})
+			.css({position: 'relative'})
 			.append(
 				$(this.canvas)
 				.attr('width', this.settings.width + 'px')
 				.attr('height', this.settings.height + 'px')
-				.css({cursor: (this.settings.cursor ? 'url("' + this.settings.cursor + '"), default' : 'default')})
 			)
 			
 			this.bind('mousedown', 'ScratchDown');
@@ -180,6 +180,9 @@
 		{
 			this.sp.css('width', this.settings.width);
 			this.sp.css('height', this.settings.height);
+			this.sp.css('cursor', (this.settings.cursor ? 'url("' + this.settings.cursor + '"), default' : 'default'));
+
+			$(this.canvas).css({cursor: (this.settings.cursor ? 'url("' + this.settings.cursor + '"), default' : 'default')});
 			
 			this.canvas.width = this.settings.width;
 			this.canvas.height = this.settings.height;
