@@ -8,7 +8,7 @@
  * @license         This wScratchPad jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @docs            http://www.websanova.com/plugins/websanova/scratchpad
- * @version         Version 1.1.0
+ * @version         Version 1.1.1
  *
  ******************************************/
 (function($)
@@ -58,7 +58,7 @@
 				return false;	
 			}
 
-			var sp = new ScratchPad($settings);
+			var sp = new ScratchPad($settings, elem);
 			
 			elem.append(sp.generate());
 			
@@ -86,10 +86,11 @@
 		cursor		: null						// Set path to custom cursor
 	};
 	
-	function ScratchPad(settings)
+	function ScratchPad(settings, elem)
 	{
 		this.sp = null;
 		this.settings = settings;
+		this.$elem = elem;
 		
 		this.scratch = false;
 		
@@ -241,7 +242,7 @@
 			
 			$this['scratch' + event](e, $this);
 			
-			if($this.settings['scratch' + event]) $this.settings['scratch' + event](e, $this.scratchPercentage($this));
+			if($this.settings['scratch' + event]) $this.settings['scratch' + event].apply($this, [e, $this.scratchPercentage($this)]);
 		},
 
 		scratchPercentage: function($this)
