@@ -8,7 +8,7 @@ A jQuery plugin to simulate scratching a card/ticket/etc (mobile friendly). [Che
 Available options with notes, the values here are the defaults.
 
 ```javascript
-$('input, textarea').wScratchPad({
+$('#elem').wScratchPad({
     width         : 210,                 // set width - best to match image width
     height        : 100,                 // set height - best to match image height
     image         : 'images/slide1.jpg', // set image path
