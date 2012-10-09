@@ -36,7 +36,7 @@ console.log($('#elem').wScratchPad('size'));            // 10
 console.log($('.elem').wScratchPad('size'));            // ['10', '10', '10']
 ```
 
-## Functions
+## Methods
 
 ```javascript
 $('#elem').wScratchPad('reset');
