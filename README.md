@@ -26,20 +26,21 @@ $('#elem').wScratchPad({
 Update settings on the fly:
 
 ```javascript
-$('input').wScratchPad('width', 300);
+$('#elem').wScratchPad('width', 300);
 ```
 
 Retrieve settings, if more than one it will return an array otherwise just the value.
 
 ```javascript
 console.log($('#elem').wScratchPad('size'));            // 10
-console.log($('input').wScratchPad('size'));            // ['10', '10', '10']
+console.log($('.elem').wScratchPad('size'));            // ['10', '10', '10']
 ```
 
 ## Functions
 
 ```javascript
 $('#elem').wScratchPad('reset');
+$('#elem').wScratchPad('enabled', <boolean>);
 ```
 
 ## Examples

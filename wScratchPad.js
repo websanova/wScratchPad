@@ -8,7 +8,7 @@
  * @license         This wScratchPad jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github			http://github.com/websanova/wScratchPad
- * @version         Version 1.1.1
+ * @version         Version 1.2.0
  *
  ******************************************/
 (function($)
@@ -29,7 +29,8 @@
 
 				if(data)
 				{
-					if(option === 'reset') data.reset();
+					if(option === 'reset') { data.reset(); }
+					else if(option === 'enabled') { data.enabled = settings === true; }
 					else if($.fn.wScratchPad.defaultSettings[option] !== undefined)
 					{
 						if(settings !== undefined) { data.settings[option] = settings; }
@@ -92,6 +93,7 @@
 		this.settings = settings;
 		this.$elem = elem;
 		
+		this.enabled = true;
 		this.scratch = false;
 		
 		this.canvas = null;
@@ -121,6 +123,8 @@
 			$(this.canvas)
 			.mousedown(function(e)
 			{
+				if(!$this.enabled) return true;
+
 				e.preventDefault();
 				e.stopPropagation();
 				

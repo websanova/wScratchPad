@@ -24,7 +24,9 @@
 		<a href="javascript:set_image_bg();">set image background</a> | 
 		<a href="javascript:set_image_overlay();">set overlay image</a> | 
 		<a href="javascript:set_to_winner();">set to winner</a> | 
-		<a href="javascript:change_size();">change size</a> 
+		<a href="javascript:change_size();">change size</a> | 
+		<a href="javascript:enabled(false);">disable</a> | 
+		<a href="javascript:enabled(true);">enable</a> | 
 	</div>
 	<div>
 		percent scratched: <span id="percent_scratched"></span>
@@ -88,6 +90,11 @@
 		{
 			sp.wScratchPad('image2', './images/slide3.jpg');
 			sp.wScratchPad('reset');
+		}
+
+		function enabled(toggle)
+		{
+			sp.wScratchPad('enabled', toggle);
 		}
 	</script>
 	
