@@ -8,7 +8,7 @@
  * @license         This wScratchPad jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github			http://github.com/websanova/wScratchPad
- * @version         Version 1.2.0
+ * @version         Version 1.2.1
  *
  ******************************************/
 (function($)
@@ -154,14 +154,14 @@
 				}
 			});
 
-			this.bindMobile();
+			this.bindMobile(this.sp);
 			
 			return this.sp;
 		},
 		
-		bindMobile: function()
+		bindMobile: function($el)
 		{
-			this.sp.bind('touchstart touchmove touchend touchcancel', function ()
+			$el.bind('touchstart touchmove touchend touchcancel', function ()
 			{
 				var touches = event.changedTouches, first = touches[0], type = ""; 
 
