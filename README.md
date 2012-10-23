@@ -92,6 +92,12 @@ Init with custom cursor:
 ```
 
 
+## Resources
+
+* [jQuery Plugin Development Boilerplate](http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate)
+* [The Ultimate Guide to Writing jQuery Plugins](http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins)
+
+
 ## License
 
 MIT licensed
