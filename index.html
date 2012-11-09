@@ -19,6 +19,7 @@
 	<div>
 		<a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> | 
 		<a id="reset" href="javascript:reset();">reset</a> | 
+		<a href="javascript:clear();">clear</a> | 
 		<a id="reset" href="javascript:reset_with_new_color();">reset with new color</a> | 
 		<a href="javascript:get_color();">get color</a> | 
 		<a href="javascript:set_image_bg();">set image background</a> | 
@@ -68,6 +69,11 @@
 			sp.wScratchPad('reset');
 		}
 
+		function clear()
+		{
+			sp.wScratchPad('clear');
+		}
+
 		function reset_with_new_color()
 		{
 			sp.wScratchPad('color', '#FF0000');
@@ -99,11 +105,26 @@
 	</script>
 	
 	<!-- testing multiple scratch pads -->
-	<div id="wScratchPad1" style="display:inline-block; position:relative; border:solid black 1px;"></div>
+	<div id="wScratchPad2" style="display:inline-block; position:relative; border:solid black 1px;"></div>
 	
 	<script type="text/javascript">
-		$("#wScratchPad1").wScratchPad({
+		$("#wScratchPad2").wScratchPad({
 			cursor:'./cursors/mario.png'
+		});
+	</script>
+
+	<!-- clear after 70% -->
+	<h3>Clear after 70 percent</h3>
+	<div id="wScratchPad3" style="display:inline-block; position:relative; border:solid black 1px;"></div>
+	
+	<script type="text/javascript">
+		$("#wScratchPad3").wScratchPad({
+			cursor:'./cursors/mario.png',
+			scratchMove: function(e, percent)
+			{
+				if(percent > 70)
+				this.clear();
+			},
 		});
 	</script>
 </body>

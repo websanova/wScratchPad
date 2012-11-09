@@ -40,6 +40,7 @@ console.log($('.elem').wScratchPad('size'));            // ['10', '10', '10']
 
 ```javascript
 $('#elem').wScratchPad('reset');
+$('#elem').wScratchPad('clear');
 $('#elem').wScratchPad('enabled', <boolean>);
 ```
 
