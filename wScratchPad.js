@@ -203,7 +203,14 @@
 			{
 				if(this.settings.overlay != 'none')
 				{
+<<<<<<< HEAD
 					this.drawImage(this.settings.image);
+=======
+					if(this.settings.image)
+					{
+						this.drawImage(this.settings.image);
+					}
+>>>>>>> 2c65860... Changed syntax
 					this.ctx.globalCompositeOperation = this.settings.overlay;
 				}
 				else
@@ -231,7 +238,14 @@
 
 		setBgImage: function()
 		{
+<<<<<<< HEAD
 			this.sp.css({backgroundImage: 'url('+this.settings.image+')'});
+=======
+			if(this.settings.image)
+			{
+				this.sp.css({backgroundImage: 'url('+this.settings.image+')'});
+			}
+>>>>>>> 2c65860... Changed syntax
 		},
 
 		drawImage: function(imagePath)
