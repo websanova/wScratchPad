@@ -1,7 +1,7 @@
 {
   "name": "wScratchPad",
   "title": "wScratchPad jQuery Plugin",
-  "description": "A jQuery canvas scratch pad plugin",
+  "description": "A jQuery canvas scratchpad plugin by Websanova",
   "keywords": [
     "websanova",
     "wScratchPad",
@@ -9,7 +9,7 @@
     "canvas",
     "html5"
   ],
-  "version": "v1.4.1",
+  "version": "1.4.2",
   "author": {
     "name": "Websanova",
     "email": "rob@websanova.com",
