@@ -1,6 +1,15 @@
 # wScratchPad.js
 
-A jQuery plugin to simulate scratching a card/ticket/etc (mobile friendly). [Check out the live demo](http://www.websanova.com/plugins/scratchpad/html5).
+A jQuery plugin to mimic a scratch card or pad behaviour.  Allowing you to scratch off an overlay as either a color or image.
+
+* [View the wScratchPad demo](http://wscratchpad.websanova.com)
+* [Download the lastest version of wScratchPad](https://github.com/websanova/wScratchPad/tags)
+
+
+## Related Plugins
+
+* [wPaint](http://wpaint.websanova.com) - Simple paint drawing plugin.
+* [wColorPicker](http://wcolorpicker.websanova.com) - Color pallette seleciton plugin.
 
 
 ## Settings
@@ -23,78 +32,59 @@ $('#elem').wScratchPad({
 });
 ```
 
-Update settings on the fly:
+## Examples
 
-```javascript
-$('#elem').wScratchPad('width', 300);
+Include the following files:
+
+```js
+<script type="text/javascript" src="./wScratchPad.js"></script>
+<link rel="Stylesheet" type="text/css" href="./wScratchPad.css" />
 ```
 
-Retrieve settings, if more than one it will return an array otherwise just the value.
+### percent scratched
 
-```javascript
-console.log($('#elem').wScratchPad('size'));            // 10
-console.log($('.elem').wScratchPad('size'));            // ['10', '10', '10']
+```js
+$("#elem").wScratchPad({
+    scratchDown: function(e, percent){ console.log(percent); },
+    scratchMove: function(e, percent){ console.log(percent); },
+    scratchUp: function(e, percent){ console.log(percent); }
+});
 ```
 
-## Methods
+### updat eon the fly
 
-```javascript
+```js
+var sp = $("#wScratchPad").wScratchPad();
+
+sp.wScratchPad('width', '200');
+sp.wScratchPad('image', './images/winner.png');
+sp.wScratchPad('image2', './images/scratch-to-win.png');
+sp.wScratchPad('cursor', './cursors/coin.png');
+sp.wScratchPad('reset');
+```
+
+### custom cursor:
+
+You can init the scratch pad with a custom cursor by setting a path to an image using the cursor option.
+
+```js
+$("#wScratchPad").wScratchPad({
+    cursor:'./cursors/mario.png'
+});
+```
+
+### methods
+
+```js
 $('#elem').wScratchPad('reset');
 $('#elem').wScratchPad('clear');
 $('#elem').wScratchPad('enabled', <boolean>);
 ```
 
-## Examples
-
-Show percent scratched:
-
-```html
-<div id="wScratchPad"></div>
-
-<div>
-    percent scratched: <span id="percent_scratched"></span>
-</div>
-
-<script type="text/javascript">
-    var sp = $("#wScratchPad").wScratchPad({
-        scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
-        scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
-        scratchUp: function(e, percent){$("#percent_scratched").html(percent)}
-    });
-</script>
-```
-
-Update on the fly:
-
-```html
-<div id="wScratchPad"></div>
-
-<script type="text/javascript">
-    var sp = $("#wScratchPad").wScratchPad();
-
-    sp.wScratchPad('width', '200');
-    sp.wScratchPad('image', './images/winner.png');
-    sp.wScratchPad('image2', './images/scratch-to-win.png');
-    sp.wScratchPad('cursor', './cursors/coin.png');
-    sp.wScratchPad('reset');
-</script>
-```
-
-Init with custom cursor:
-
-```html
-<div id="wScratchPad"></div>
-
-<script type="text/javascript">
-    $("#wScratchPad").wScratchPad({
-        cursor:'./cursors/mario.png'
-    });
-</script>
-```
-
 
 ## Resources
 
+* [More jQuery plugins by Websanova](http://websanova.com/plugins)
 * [jQuery Plugin Development Boilerplate](http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate)
 * [The Ultimate Guide to Writing jQuery Plugins](http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins)
 

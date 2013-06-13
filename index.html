@@ -1,131 +1,221 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	
-	<meta CHARSET="UTF-8">
-	
-	<title>Websanova Scratch Pad</title>
-
-	<!-- jQuery -->
-	<script type="text/javascript" src="./inc/jquery.1.8.2.min.js"></script>
-
-	<!-- wScratchPad -->
-	<script type="text/javascript" src="./wScratchPad.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="jquery, plugin, scratchpad, scratchcard, scratch" />
+    <meta name="description" content="A jQuery plugin to mimic a scratch card or pad behaviour.  Allowing you to scratch off an overlay as either a color or image." />
+    <meta name = "owner" content = "Websanova" />
+    <link rel="icon" type="image/vnd.microsoft.icon"  href="./assets/img/favicon.ico" />
+    <title>Websanova :: wScratchPad</title>
+    
+    <script type="text/javascript" src="./assets/jquery.1.9.1.min.js"></script>
+    <link rel="Stylesheet" type="text/css" href="./assets/demo.css" />
 </head>
 <body>
+    <header>
+        <a id="header-logo" href="http://websanova.com" target="_blank"></a>
 
-	<div id="wScratchPad" style="display:inline-block; position:relative; border:solid black 1px;"></div>
+        <div id="header-links">
+            <a href="http://websanova.com">Home</a>
+            <a href="http://websanova.com/plugins">Plugins</a>
+            <a href="http://websanova.com/extensions">Extensions</a>
+        </div>
+    </header>   
 
-	<div>
-		<a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> | 
-		<a id="reset" href="javascript:reset();">reset</a> | 
-		<a href="javascript:clear();">clear</a> | 
-		<a id="reset" href="javascript:reset_with_new_color();">reset with new color</a> | 
-		<a href="javascript:get_color();">get color</a> | 
-		<a href="javascript:set_image_bg();">set image background</a> | 
-		<a href="javascript:set_image_overlay();">set overlay image</a> | 
-		<a href="javascript:set_to_winner();">set to winner</a> | 
-		<a href="javascript:change_size();">change size</a> | 
-		<a href="javascript:enabled(false);">disable</a> | 
-		<a href="javascript:enabled(true);">enable</a> | 
-	</div>
-	<div>
-		percent scratched: <span id="percent_scratched"></span>
-	</div>
+    <div id="content">
+        <h1 id="plugin-name">wScratchPad.js</h1>
 
-	<script type="text/javascript">
-		var sp = $("#wScratchPad").wScratchPad({
-			scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
-			scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
-			scratchUp: function(e, percent){$("#percent_scratched").html(percent)}
-		});
+        <div id="addthis-toolbox" class="addthis_toolbox addthis_default_style">
+            <a id="github-button" href="https://github.com/websanova/wScratchPad" target="_blank" title="GitHub"></a>
+            <a class="addthis_button_facebook" addthis:url="http://wscratchpad.websanova.com" addthis:title="Websanova wScratchPad Demo"></a>
+            <a class="addthis_button_twitter" addthis:url="http://wscratchpad.websanova.com" addthis:title="Websanova wScratchPad Demo"></a>
+            <a class="addthis_button_google_plusone_share" addthis:url="http://wscratchpad.websanova.com" addthis:title="Websanova wScratchPad Demo"></a>
+            <a class="addthis_button_reddit" addthis:url="http://wscratchpad.websanova.com" addthis:title="Websanova wScratchPad Demo"></a>
+            <a class="addthis_button_dzone" addthis:url="http://wscratchpad.websanova.com" addthis:title="Websanova wScratchPad Demo"></a>
+            <a class="addthis_button_compact" addthis:url="http://wscratchpad.websanova.com" addthis:title="Websanova wScratchPad Demo"></a>
+        </div>
 
-		function set_to_winner()
-		{
-			sp.wScratchPad('width', '200');
-			sp.wScratchPad('image', './images/winner.png');
-			sp.wScratchPad('image2', './images/scratch-to-win.png');
-			sp.wScratchPad('cursor', './cursors/coin.png');
-			sp.wScratchPad('reset');
-		}
+        <h2>About</h2>
 
-		function change_size()
-		{
-			sp.wScratchPad('size', '5');
-		}
+        <div class="content-box">
+            A jQuery plugin to mimic a scratch card or pad behaviour.  Allowing you to scratch off an overlay as either a color or image.
+        </div>
 
-		function reset_to_defaults()
-		{
-			sp.wScratchPad('image', './images/slide1.jpg');
-			sp.wScratchPad('image2', null);
-			sp.wScratchPad('color', '#336699');
-			sp.wScratchPad('overlay', 'none');
-			sp.wScratchPad('size', '10');
-			sp.wScratchPad('reset');
-		}
+        <ul>
+            <li><a href="https://github.com/websanova/wScratchPad/tags">Download</a></li>
+            <li><a href="https://github.com/websanova/wScratchPad#wscratchpadjs">Documentation</a></li>
+        </ul>
 
-		function reset()
-		{
-			sp.wScratchPad('reset');
-		}
+        <h2>Related Plugins</h2>
 
-		function clear()
-		{
-			sp.wScratchPad('clear');
-		}
+        <ul>
+            <li><a href="http://wpaint.websanova.com">wPaint</a> - Simple paint drawing plugin.</li>
+            <li><a href="http://wcolorpicker.websanova.com">wColorPicker</a> - Color pallette seleciton plugin.</li>
+        </ul>
 
-		function reset_with_new_color()
-		{
-			sp.wScratchPad('color', '#FF0000');
-			sp.wScratchPad('image2', null);
-			sp.wScratchPad('reset');
-		}
-		
-		function get_color()
-		{
-			alert(sp.wScratchPad('color'));
-		}
+        <h2>Demo</h2>
 
-		function set_image_bg()
-		{
-			sp.wScratchPad('image', './images/slide2.jpg');
-			sp.wScratchPad('reset');
-		}
+        <div class="content-box">
+            <div id="wScratchPad" style="display:inline-block; position:relative; border:solid black 1px;"></div>
 
-		function set_image_overlay()
-		{
-			sp.wScratchPad('image2', './images/slide3.jpg');
-			sp.wScratchPad('reset');
-		}
+            <div>
+                <a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> | 
+                <a id="reset" href="javascript:reset();">reset</a> | 
+                <a href="javascript:clear();">clear</a> | 
+                <a id="reset" href="javascript:reset_with_new_color();">reset with new color</a> | 
+                <a href="javascript:get_color();">get color</a> | 
+                <a href="javascript:set_image_bg();">set image background</a> | 
+                <a href="javascript:set_image_overlay();">set overlay image</a> | 
+                <a href="javascript:set_to_winner();">set to winner</a> | 
+                <a href="javascript:change_size();">change size</a> | 
+                <a href="javascript:enabled(false);">disable</a> | 
+                <a href="javascript:enabled(true);">enable</a> | 
+            </div>
+            <div>
+                percent scratched: <span id="percent_scratched"></span>
+            </div>
 
-		function enabled(toggle)
-		{
-			sp.wScratchPad('enabled', toggle);
-		}
-	</script>
-	
-	<!-- testing multiple scratch pads -->
-	<div id="wScratchPad2" style="display:inline-block; position:relative; border:solid black 1px;"></div>
-	
-	<script type="text/javascript">
-		$("#wScratchPad2").wScratchPad({
-			cursor:'./cursors/mario.png'
-		});
-	</script>
+            <!-- testing multiple scratch pads -->
+            <div id="wScratchPad2" style="display:inline-block; position:relative; border:solid black 1px;"></div>
 
-	<!-- clear after 70% -->
-	<h3>Clear after 70 percent</h3>
-	<div id="wScratchPad3" style="display:inline-block; position:relative; border:solid black 1px;"></div>
-	
-	<script type="text/javascript">
-		$("#wScratchPad3").wScratchPad({
-			cursor:'./cursors/mario.png',
-			scratchMove: function(e, percent)
-			{
-				if(percent > 70)
-				this.clear();
-			},
-		});
-	</script>
+            <!-- clear after 70% -->
+            <h3>Clear after 70 percent</h3>
+            <div id="wScratchPad3" style="display:inline-block; position:relative; border:solid black 1px;"></div>
+        </div>
+
+        <script type="text/javascript" src="./wScratchPad.js"></script>
+
+        <script type="text/javascript">
+            var sp = $("#wScratchPad").wScratchPad({
+                scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
+                scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
+                scratchUp: function(e, percent){$("#percent_scratched").html(percent)}
+            });
+
+            function set_to_winner()
+            {
+                sp.wScratchPad('width', '200');
+                sp.wScratchPad('image', './images/winner.png');
+                sp.wScratchPad('image2', './images/scratch-to-win.png');
+                sp.wScratchPad('cursor', './cursors/coin.png');
+                sp.wScratchPad('reset');
+            }
+
+            function change_size()
+            {
+                sp.wScratchPad('size', '5');
+            }
+
+            function reset_to_defaults()
+            {
+                sp.wScratchPad('image', './images/slide1.jpg');
+                sp.wScratchPad('image2', null);
+                sp.wScratchPad('color', '#336699');
+                sp.wScratchPad('overlay', 'none');
+                sp.wScratchPad('size', '10');
+                sp.wScratchPad('reset');
+            }
+
+            function reset()
+            {
+                sp.wScratchPad('reset');
+            }
+
+            function clear()
+            {
+                sp.wScratchPad('clear');
+            }
+
+            function reset_with_new_color()
+            {
+                sp.wScratchPad('color', '#FF0000');
+                sp.wScratchPad('image2', null);
+                sp.wScratchPad('reset');
+            }
+            
+            function get_color()
+            {
+                alert(sp.wScratchPad('color'));
+            }
+
+            function set_image_bg()
+            {
+                sp.wScratchPad('image', './images/slide2.jpg');
+                sp.wScratchPad('reset');
+            }
+
+            function set_image_overlay()
+            {
+                sp.wScratchPad('image2', './images/slide3.jpg');
+                sp.wScratchPad('reset');
+            }
+
+            function enabled(toggle)
+            {
+                sp.wScratchPad('enabled', toggle);
+            }
+        </script>
+        
+        <script type="text/javascript">
+            $("#wScratchPad2").wScratchPad({
+                cursor:'./cursors/mario.png'
+            });
+        </script>
+
+        <script type="text/javascript">
+            $("#wScratchPad3").wScratchPad({
+                cursor:'./cursors/mario.png',
+                scratchMove: function(e, percent)
+                {
+                    if(percent > 70)
+                    this.clear();
+                },
+            });
+        </script>
+
+        <h2>Resources</h2>
+
+        <ul>
+            <li><a href="http://websanova.com/plugins">More jQuery plugins by Websanova</a></li>
+            <li><a href="http://www.websanova.com/tutorials/jquery/the-ultimate-guide-to-writing-jquery-plugins">The Ultimate Guide to Writing jQuery Plugins</a></li>
+            <li><a href="http://www.websanova.com/tutorials/jquery/jquery-plugin-development-boilerplate">jQuery Plugin Development Boilerplate</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        <div id="footer-icons">
+            <!--a id="youtube-icon" href="http://websanova.com/youtube" target="_blank"></a-->
+            <a id="stumbleupon-icon" href="http://websanova.com/stumbleupon" target="_blank"></a>
+            <a id="linkedin-icon" href="http://websanova.com/linkedin" target="_blank"></a>
+            <a id="facebook-icon" href="http://websanova.com/facebook" target="_blank"></a>
+            <a id="googleplus-icon" href="http://websanova.com/googleplus" target="_blank"></a>
+            <a id="twitter-icon" href="http://websanova.com/twitter" target="_blank"></a>
+            <a id="github-icon" href="http://websanova.com/github" target="_blank"></a>
+            <a id="rss-icon" href="http://websanova.com/feed" target="_blank"></a>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        if(window.location.protocol === 'file:') $('#addthis-toolbox').hide();
+    </script>
+
+    <!-- AddThis Button BEGIN -->
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-504fdeb9241970a8"></script>
+    <!-- AddThis Button END -->
+
+    <!-- google analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-12380236-11']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </body>
 </html>

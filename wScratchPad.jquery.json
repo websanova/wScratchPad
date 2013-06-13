@@ -1,7 +1,7 @@
 {
   "name": "wScratchPad",
   "title": "wScratchPad jQuery Plugin",
-  "description": "A jQuery canvas scratchpad plugin by Websanova",
+  "description": "A jQuery plugin to mimic a scratch card or pad behaviour.  Allowing you to scratch off an overlay as either a color or image.",
   "keywords": [
     "websanova",
     "wScratchPad",
@@ -9,7 +9,7 @@
     "canvas",
     "html5"
   ],
-  "version": "1.4.2",
+  "version": "1.4.3",
   "author": {
     "name": "Websanova",
     "email": "rob@websanova.com",
@@ -29,7 +29,7 @@
     }
   ],
   "bugs": "https://github.com/websanova/wScratchPad/issues",
-  "homepage": "http://websanova.com/plugins/scratchpad",
+  "homepage": "http://wscratchpad.websanova.com",
   "docs": "https://github.com/websanova/wScratchPad#wscratchpadjs",
   "download": "https://github.com/websanova/wScratchPad/tags",
   "dependencies": {

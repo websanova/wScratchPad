@@ -1,0 +1,161 @@
+/*** layout ***/
+
+body, html {
+    font-family: verdana;
+    font-size: 12px;
+    line-height:20px;
+    color: #333;
+    background-color: #FEFEFE;
+    margin: 0;
+    text-rendering: optimizeLegibility;
+}
+a {
+    color: #3399FF;
+    text-decoration: none;
+}
+code {
+    padding: 1px 3px;
+    color: #D14;
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+    border-radius: 5px;
+}
+
+/*** header ***/
+
+header {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #1B1B1B;
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    border-width: 0 0 1px;
+    color: #FFF;
+    font-size: 10px;
+    text-align: left;
+    vertical-align: middle;
+    z-index: 100;
+}
+#header-logo {
+    position: absolute;
+    display: block;
+    width: 94px;
+    height: 20px;
+    left: 10px;
+    top: 10px;
+    background-image: url('./img/websanova-logo-small-full-black.png');
+}
+#header-links {
+    position: absolute;
+    right: 10px;
+}
+#header-links a {
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Verdana;
+    color: #FAFAFA;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+#header-links a:hover {
+    color: #636363;
+}
+
+/*** content ***/
+
+#plugin-name {
+    padding-bottom: 30px;
+    font-size: 30px;
+    border-bottom: solid #CACACA 1px;
+}
+#github-button {
+    display: block;
+    float: left;
+    margin-right: 2px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-image: url('./img/addthis-github.png');
+}
+#addthis-toolbox {
+    position: absolute;
+    right: 15px;
+    top: 44px;
+}
+#content {
+    position: relative;
+    background: #FEFEFE;
+    max-width: 600px;
+    padding: 20px;
+    margin: 30px auto;
+}
+.content-box {
+    padding-left: 10px;
+}
+#content ul {
+    padding-left: 30px;
+}
+/*** footer ***/
+
+footer {
+    position: fixed;
+    left: 0px;
+    bottom: -1px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #1B1B1B;
+    background-image: linear-gradient(to bottom, #222222, #111111);
+    background-repeat: repeat-x;
+    border-color: #252525;
+    box-shadow: 10px 1px 10px rgba(0, 0, 0, 0.5);
+    border-width: 0 0 1px;
+    color: #FFF;
+    font-size: 10px;
+    text-align: left;
+    vertical-align: middle;
+    z-index: 100;
+}
+#footer-icons {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+#footer-icons a {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 17px;
+    height: 17px;
+    margin: 12px 0 0 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#linkedin-icon { background-image: url('./img/linkedin-icon.png'); width: 18px; }
+#stumbleupon-icon { background-image: url('./img/stumbleupon-icon.png'); }
+#googleplus-icon { background-image: url('./img/googleplus-icon.png'); }
+#youtube-icon { background-image: url('./img/youtube-icon.png'); width: 17px; height: 18px; }
+#facebook-icon { background-image: url('./img/facebook-icon.png'); width: 8px; }
+#twitter-icon { background-image: url('./img/twitter-icon.png'); width: 20px; }
+#github-icon { background-image: url('./img/github-icon.png'); width: 20px; }
+#rss-icon { background-image: url('./img/rss-icon.png'); }
+
+/*** media ***/
+
+@media screen and (min-width: 600px) {
+    #header-logo {
+        left: 50px;
+    }
+    #header-links {
+        right: 50px;
+    }
+    #footer-icons {
+        right: 50px;
+    }
+}
