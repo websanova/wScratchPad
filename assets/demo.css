@@ -21,6 +21,10 @@ code {
     border-radius: 5px;
 }
 
+h2 {
+    display: inline-block;
+}
+
 /*** header ***/
 
 header {
@@ -91,7 +95,7 @@ header {
 #content {
     position: relative;
     background: #FEFEFE;
-    max-width: 600px;
+    max-width: 700px;
     padding: 20px;
     margin: 30px auto;
 }
@@ -146,6 +150,11 @@ footer {
 #github-icon { background-image: url('./img/github-icon.png'); width: 20px; }
 #rss-icon { background-image: url('./img/rss-icon.png'); }
 
+/*** ads ***/
+#adsblock {
+    display: none;
+}
+
 /*** media ***/
 
 @media screen and (min-width: 600px) {
@@ -157,5 +166,13 @@ footer {
     }
     #footer-icons {
         right: 50px;
+    }
+    #adsblock {
+        position: relative;
+        display: block;
+        width: 120px;
+        height: 600px;
+        float: right;
+        margin-left: 20px;
     }
 }
