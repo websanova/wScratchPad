@@ -8,7 +8,7 @@
  * @license         This wScratchPad jQuery plug-in is dual licensed under the MIT and GPL licenses.
  * @link            http://www.websanova.com
  * @github			http://github.com/websanova/wScratchPad
- * @version         Version 1.4.3
+ * @version         Version 1.4.4
  *
  ******************************************/
 (function($)
