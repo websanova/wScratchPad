@@ -82,6 +82,7 @@
 		color		: '#336699',				// set scratch color - if image2 is not set uses color
 		overlay		: 'none',					// set the type of overlay effect 'none', 'lighter' - only used with color
 		size		: 10,						// set size of scratcher
+		realtimePercent : false,                                        // Update scratch percent only on the mouseup/touchend (for better performances on mobile device)
 		scratchDown	: null,						// scratchDown callback
 		scratchUp	: null,						// scratchUp callback
 		scratchMove	: null,						// scratcMove callback
@@ -258,7 +259,9 @@
 			
 			$this['scratch' + event](e, $this);
 			
-			if($this.settings['scratch' + event]) $this.settings['scratch' + event].apply($this, [e, $this.scratchPercentage($this)]);
+			if(this.settings.realtimePercent || event == "Up") {
+				if($this.settings['scratch' + event]) $this.settings['scratch' + event].apply($this, [e, $this.scratchPercentage($this)]);
+			}
 		},
 
 		scratchPercentage: function($this)
