@@ -245,6 +245,7 @@
 		{
 			var $this = this;
 			var img = new Image();
+				img.crossOrigin = '';
   			img.src = imagePath;
   			$(img).load(function(){
   				$this.ctx.drawImage(img, 0, 0);
