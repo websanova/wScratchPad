@@ -238,6 +238,8 @@
 			if(this.settings.image)
 			{
 				this.sp.css({backgroundImage: 'url('+this.settings.image+')'});
+				this.sp.css({backgroundRepeat: 'no-repeat' });
+				this.sp.css({backgroundSize: this.settings.width + 'px ' + this.settings.height + 'px' });
 			}
 		},
 
