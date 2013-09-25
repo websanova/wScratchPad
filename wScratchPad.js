@@ -248,8 +248,13 @@
 			var $this = this;
 			var img = new Image();
   			img.src = imagePath;
+		    var _this = this;
   			$(img).load(function(){
-  				$this.ctx.drawImage(img, 0, 0);
+			    if (_this.settings)
+			        $this.ctx.drawImage(img, 0, 0, _this.settings.width, _this.settings.height);
+			    else
+			        $this.ctx.drawImage(img, 0, 0);
+				
   				$this.setBgImage();
   			})
 		},
