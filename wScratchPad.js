@@ -163,9 +163,9 @@
 		
 		bindMobile: function($el)
 		{
-			$el.bind('touchstart touchmove touchend touchcancel', function ()
+			$el.bind('touchstart touchmove touchend touchcancel', function (event)
 			{
-				var touches = event.changedTouches, first = touches[0], type = ""; 
+                var touches = event.originalEvent.changedTouches, first = touches[0], type = ""; 
 
 				switch (event.type)
 				{
