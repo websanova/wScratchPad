@@ -32,14 +32,22 @@
     <div class="content-box">
 
       <div id="demo1" class="scratchpad"></div>
-      <br/>
-      <input type="button" value="Reset" onclick="$('.scratchpad').wScratchPad('reset');"/>
-      <input type="button" value="Clear" onclick="$('.scratchpad').wScratchPad('clear');"/>
-      <input type="button" value="Enable" onclick="$('.scratchpad').wScratchPad('enable', true);"/>
-      <input type="button" value="Disable" onclick="$('.scratchpad').wScratchPad('enable', false);"/>
+      <div id="demo1-percent">&nbsp;</div>
+      <input type="button" value="Reset" onclick="$('#demo1').wScratchPad('reset');"/>
+      <input type="button" value="Clear" onclick="$('#demo1').wScratchPad('clear');"/>
+      <input type="button" value="Enable" onclick="$('#demo1').wScratchPad('enable', true);"/>
+      <input type="button" value="Disable" onclick="$('#demo1').wScratchPad('enable', false);"/>
+
+      <h3>Clear After 70 Percent Scratched</h3>
+      <div id="demo2" class="scratchpad"></div>
+      <div id="demo2-percent">&nbsp;</div>
+      <input type="button" value="Reset" onclick="$('#demo2').wScratchPad('reset');"/>
+      <input type="button" value="Clear" onclick="$('#demo2').wScratchPad('clear');"/>
+      <input type="button" value="Enable" onclick="$('#demo2').wScratchPad('enable', true);"/>
+      <input type="button" value="Disable" onclick="$('#demo2').wScratchPad('enable', false);"/>
       
       <style>
-        #demo1{
+        .scratchpad{
           width: 25%;
           height: 100px;
           border: solid 1px;
@@ -53,7 +61,16 @@
           fg: './images/slide1.jpg',
           'cursor': 'url("./cursors/coin.png") 5 5, default',
           scratchMove: function (e, percent) {
-            console.log(percent);
+            $('#demo1-percent').html(percent);
+          }
+        });
+
+        $('#demo2').wScratchPad({
+          bg: './images/scratch-to-win.png',
+          fg: './images/slide1.jpg',
+          'cursor': 'url("./cursors/coin.png") 5 5, default',
+          scratchMove: function (e, percent) {
+            $('#demo2-percent').html(percent);
 
             if (percent > 70) {
               this.clear();
