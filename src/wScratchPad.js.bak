@@ -125,7 +125,7 @@
 			$(this.canvas)
 			.mousedown(function(e)
 			{
-				if(!$this.enabled) return true;
+				if(!$this.enable) return true;
 
 				e.preventDefault();
 				e.stopPropagation();

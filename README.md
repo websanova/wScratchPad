@@ -16,62 +16,52 @@ A jQuery plugin to mimic a scratch card or pad behaviour.  Allowing you to scrat
 
 Available options with notes, the values here are the defaults.
 
-```javascript
+```js
 $('#elem').wScratchPad({
-    width           : 210,                  // set width - best to match image width
-    height          : 100,                  // set height - best to match image height
-    image           : 'images/slide1.jpg',  // set image path
-    image2          : null,                 // set overlay image path - if set color is not used
-    color           : '#336699',            // set scratch color - if image2 is not set uses color
-    overlay         : 'none',               // set the type of overlay effect 'none', 'lighter' - only used with color
-    size            : 10,                   // set size of scratcher
-    realtimePercent : false,                // Update scratch percent only on the mouseup/touchend (for better performances on mobile device)
-    scratchDown     : null,                 // scratchDown callback
-    scratchUp       : null,                 // scratchUp callback
-    scratchMove     : null,                 // scratcMove callback
-    cursor          : null                  // Set path to custom cursor
+  size        : 5,          // The size of the brush/scratch.
+  bg          : '#cacaca',  // Background (image path or hex color).
+  fg          : '#6699ff',  // Foreground (image path or hex color).
+  realtime    : true,       // Calculates percentage in realitime.
+  scratchDown : null,       // Set scratchDown callback.
+  scratchUp   : null,       // Set scratchUp callback.
+  scratchMove : null,       // Set scratcMove callback.
+  cursor      : 'crosshair' // Set cursor.
 });
 ```
+
+Note on `realtime`, if set to `false` this will only send percentage calculations to the `scratchUp` and should be used to increase performance.
+
+Note on `bg` and `fg`, these can be eitehr a valid hex color beginning with `#` otherwise it will default to trying to set an image.
 
 ## Examples
 
 Include the following files:
 
 ```js
-<script type="text/javascript" src="./wScratchPad.js"></script>
-<link rel="Stylesheet" type="text/css" href="./wScratchPad.css" />
+<script type="text/javascript" src="./wScratchPad.min.js"></script>
 ```
 
 ### percent scratched
 
 ```js
 $("#elem").wScratchPad({
-    scratchDown: function(e, percent){ console.log(percent); },
-    scratchMove: function(e, percent){ console.log(percent); },
-    scratchUp: function(e, percent){ console.log(percent); }
+  scratchDown: function(e, percent){ console.log(percent); },
+  scratchMove: function(e, percent){ console.log(percent); },
+  scratchUp: function(e, percent){ console.log(percent); }
 });
 ```
 
-### updat eon the fly
+### update on the fly
 
 ```js
-var sp = $("#wScratchPad").wScratchPad();
+var sp = $("#elem").wScratchPad();
 
-sp.wScratchPad('width', '200');
-sp.wScratchPad('image', './images/winner.png');
-sp.wScratchPad('image2', './images/scratch-to-win.png');
-sp.wScratchPad('cursor', './cursors/coin.png');
-sp.wScratchPad('reset');
-```
+sp.wScratchPad('size', 5);
+sp.wScratchPad('cursor', 'url("./cursors/coin.png") 5 5, default');
 
-### custom cursor:
+// Or directly with element.
 
-You can init the scratch pad with a custom cursor by setting a path to an image using the cursor option.
-
-```js
-$("#wScratchPad").wScratchPad({
-    cursor:'./cursors/mario.png'
-});
+$("#elem").wScratchPad('image', './images/winner.png');
 ```
 
 ### methods

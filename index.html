@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Websanova :: wScratchPad</title>
+  <meta name="viewport" content="width=device-width" />
   
+  <title>Websanova :: wScratchPad</title>
+
   <!-- filestart -->
   <link rel="icon" type="image/vnd.microsoft.icon"  href="./demo/img/favicon.ico" />
   <link rel="Stylesheet" type="text/css" href="./demo/demo.css" />
-  <script type="text/javascript" src="./lib/jquery.1.10.2.min.js"></script>
+  <script type="text/javascript" src="./lib/jquery.1.11.0.min.js"></script>
   <!-- fileend -->
 </head>
 <body>
@@ -28,105 +30,38 @@
     <h1 id="plugin-name">wScratchPad.js</h1>
 
     <div class="content-box">
-      <div id="wScratchPad" style="display:inline-block; position:relative; border:solid black 1px;"></div>
 
-      <div>
-        <a id="reset" href="javascript:reset_to_defaults();">reset to defaults</a> | 
-        <a id="reset" href="javascript:reset();">reset</a> | 
-        <a href="javascript:clear();">clear</a> | 
-        <a id="reset" href="javascript:reset_with_new_color();">reset with new color</a> | 
-        <a href="javascript:get_color();">get color</a> | 
-        <a href="javascript:set_image_bg();">set image background</a> | 
-        <a href="javascript:set_image_overlay();">set overlay image</a> | 
-        <a href="javascript:set_to_winner();">set to winner</a> | 
-        <a href="javascript:change_size();">change size</a> | 
-        <a href="javascript:enabled(false);">disable</a> | 
-        <a href="javascript:enabled(true);">enable</a> | 
-      </div>
-      <div>
-        percent scratched: <span id="percent_scratched"></span>
-      </div>
+      <div id="demo1" class="scratchpad"></div>
+      <br/>
+      <input type="button" value="Reset" onclick="$('.scratchpad').wScratchPad('reset');"/>
+      <input type="button" value="Clear" onclick="$('.scratchpad').wScratchPad('clear');"/>
+      <input type="button" value="Enable" onclick="$('.scratchpad').wScratchPad('enable', true);"/>
+      <input type="button" value="Disable" onclick="$('.scratchpad').wScratchPad('enable', false);"/>
+      
+      <style>
+        #demo1{
+          width: 25%;
+          height: 100px;
+          border: solid 1px;
+        }
+      </style>
 
-      <!-- testing multiple scratch pads -->
-      <div id="wScratchPad2" style="display:inline-block; position:relative; border:solid black 1px;"></div>
-
-      <!-- clear after 70% -->
-      <h3>Clear after 70 percent</h3>
-      <div id="wScratchPad3" style="display:inline-block; position:relative; border:solid black 1px;"></div>
-
-      <script type="text/javascript" src="./wScratchPad.js"></script>
+      <script type="text/javascript" src="./wScratchPad.min.js"></script>
       <script type="text/javascript">
-        var sp = $("#wScratchPad").wScratchPad({
-          scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
-          scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
-          scratchUp: function(e, percent){$("#percent_scratched").html(percent)}
-        });
+        $('#demo1').wScratchPad({
+          bg: './images/scratch-to-win.png',
+          fg: './images/slide1.jpg',
+          'cursor': 'url("../cursors/coin.png") 5 5, default',
+          scratchMove: function (e, percent) {
+            console.log(percent);
 
-        function set_to_winner() {
-          sp.wScratchPad('width', '200');
-          sp.wScratchPad('image', './images/winner.png');
-          sp.wScratchPad('image2', './images/scratch-to-win.png');
-          sp.wScratchPad('cursor', './cursors/coin.png');
-          sp.wScratchPad('reset');
-        }
-
-        function change_size() {
-          sp.wScratchPad('size', '5');
-        }
-
-        function reset_to_defaults() {
-          sp.wScratchPad('image', './images/slide1.jpg');
-          sp.wScratchPad('image2', null);
-          sp.wScratchPad('color', '#336699');
-          sp.wScratchPad('overlay', 'none');
-          sp.wScratchPad('size', '10');
-          sp.wScratchPad('reset');
-        }
-
-        function reset() {
-          sp.wScratchPad('reset');
-        }
-
-        function clear() {
-          sp.wScratchPad('clear');
-        }
-
-        function reset_with_new_color() {
-          sp.wScratchPad('color', '#FF0000');
-          sp.wScratchPad('image2', null);
-          sp.wScratchPad('reset');
-        }
-        
-        function get_color() {
-          alert(sp.wScratchPad('color'));
-        }
-
-        function set_image_bg() {
-          sp.wScratchPad('image', './images/slide2.jpg');
-          sp.wScratchPad('reset');
-        }
-
-        function set_image_overlay() {
-          sp.wScratchPad('image2', './images/slide3.jpg');
-          sp.wScratchPad('reset');
-        }
-
-        function enabled(toggle) {
-          sp.wScratchPad('enabled', toggle);
-        }
-
-        $("#wScratchPad2").wScratchPad({
-          cursor:'./cursors/mario.png'
-        });
-
-        $("#wScratchPad3").wScratchPad({
-          cursor:'./cursors/mario.png',
-          scratchMove: function(e, percent) {
-              if(percent > 70)
+            if (percent > 70) {
               this.clear();
+            }
           }
         });
       </script>
+      
     </div>
   </div>
 

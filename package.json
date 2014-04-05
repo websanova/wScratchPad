@@ -1,0 +1,22 @@
+{
+  "name": "wScratchPad",
+  "title": "wScratchPad jQuery Plugin",
+  "version": "2.0.0",
+  "description": "A jQuery plugin to mimic a scratch card or pad behaviour.  Allowing you to scratch off an overlay as either a color or image.",
+  "main": "wScratchPad.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/websanova/wScratchPad"
+  },
+  "author": {
+    "name": "Websanova",
+    "email": "rob@websanova.com",
+    "url": "http://websanova.com"
+  },
+  "homepage" : "http://wscratchpad.websanova.com",
+  "license": "MIT, GPL",
+  "dependencies": {
+    "grunt-contrib-uglify": "",
+    "grunt-contrib-jshint": ""
+  }
+}
