@@ -41,7 +41,7 @@ Include the following files:
 <script type="text/javascript" src="./wScratchPad.min.js"></script>
 ```
 
-### percent scratched
+### Percent scratched
 
 ```js
 $("#elem").wScratchPad({
@@ -51,7 +51,7 @@ $("#elem").wScratchPad({
 });
 ```
 
-### update on the fly
+### Update on the Fly
 
 ```js
 var sp = $("#elem").wScratchPad();
@@ -64,7 +64,7 @@ sp.wScratchPad('cursor', 'url("./cursors/coin.png") 5 5, default');
 $("#elem").wScratchPad('image', './images/winner.png');
 ```
 
-### methods
+### Methods
 
 ```js
 $('#elem').wScratchPad('reset');
