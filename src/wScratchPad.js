@@ -35,6 +35,8 @@
       // and better support for mobile if we are resizing the scratch pad.
       this.$scratchpad = $(this.canvas).css({position: 'absolute', width: '100%', height: '100%'});
       
+      this.$scratchpad.bindMobileEvents();
+
       // Setup event handlers.
       this.$scratchpad
       .mousedown($.proxy(function (e) {
