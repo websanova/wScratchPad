@@ -87,6 +87,17 @@
       // we need to run this at differnt sizes.
       this.$scratchpad.attr('width', width).attr('height', height);
 
+      // retina conversion
+      if(window.devicePixelRatio == 2)
+      {
+          this.canvas.setAttribute('width', width * 2);
+          this.canvas.setAttribute('height', height * 2);
+          this.ctx.scale(2, 2);
+
+          // not sure if we need to double the pixel count.  I get script errors (security error) elsewhere when checking % scratched off, so I can't test.
+          //this.pixels *= 2;
+      }
+
       // Default to image hidden in case no bg or color is set.
       this.$img.hide();
 
