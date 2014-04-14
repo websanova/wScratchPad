@@ -88,7 +88,6 @@
       // we need to run this at differnt sizes.
       this.$scratchpad.attr('width', width).attr('height', height);
 
-
       this.canvas.setAttribute('width', width * devicePixelRatio);
       this.canvas.setAttribute('height', height * devicePixelRatio);
       this.ctx.scale(devicePixelRatio, devicePixelRatio);
