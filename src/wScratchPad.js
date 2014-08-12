@@ -127,6 +127,11 @@
           });
         }
       }
+
+      // If delay, create a global variable to store the next percent update
+      if(this.options.delay){
+        this.nextPercentUpdate = null;
+      }
     },
 
     clear: function () {
@@ -174,8 +179,16 @@
       e.pageY = Math.floor(e.pageY - this.canvasOffset.top);
       
       this['_scratch' + event](e);
-      
-      if (this.options.realtime || event === 'Up') {
+
+      if(this.options.delayed){
+        if(this.options['scratch' + event]) {
+          var currentDate = new Date().getTime();
+          if(this.nextPercentUpdate == null || this.nextPercentUpdate < currentDate){
+            this.nextPercentUpdate = currentDate + this.options.delayed;
+            this.options['scratch' + event].apply(this, [e, this._scratchPercent()]);
+          }
+        }
+      } else if(this.options.realtime || event === 'Up'){
         if (this.options['scratch' + event]) {
           this.options['scratch' + event].apply(this, [e, this._scratchPercent()]);
         }
