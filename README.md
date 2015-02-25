@@ -69,7 +69,7 @@ $("#elem").wScratchPad('image', './images/winner.png');
 ```js
 $('#elem').wScratchPad('reset');
 $('#elem').wScratchPad('clear');
-$('#elem').wScratchPad('enabled', <boolean>);
+$('#elem').wScratchPad('enable', <boolean>);
 ```
 
 
