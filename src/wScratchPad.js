@@ -29,7 +29,7 @@
         this.$el.css('position', 'relative');
       }
 
-      this.$img = $('<img src=""/>').attr('crossOrigin', '').css({position: 'absolute', width: '100%', height: '100%'});
+      this.$img = $('<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"/>').attr('crossOrigin', '').css({position: 'absolute', width: '100%', height: '100%'});
 
       // Make sure we sett style width height here for elastic stretch
       // and better support for mobile if we are resizing the scratch pad.
