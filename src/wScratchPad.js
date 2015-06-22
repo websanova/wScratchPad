@@ -286,7 +286,7 @@
   };
 
   $.fn.bindMobileEvents = function () {
-    $(this).on('touchstart touchmove touchend touchcancel', function (event) {
+    var eventFunc = function (event) {
       var touches = (event.changedTouches || event.originalEvent.targetTouches),
           first = touches[0],
           type = '';
@@ -315,6 +315,9 @@
       );
 
       first.target.dispatchEvent(simulatedEvent);
+    });
+    $(this).on('touchstart touchmove touchcancel', eventFunc).each(function () {
+      this.addEventListener('touchend', eventFunc);
     });
   };
 })(jQuery);
