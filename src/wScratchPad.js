@@ -34,7 +34,7 @@
       // Make sure we sett style width height here for elastic stretch
       // and better support for mobile if we are resizing the scratch pad.
       this.$scratchpad = $(this.canvas).css({position: 'absolute', width: '100%', height: '100%'});
-      
+
       this.$scratchpad.bindMobileEvents();
 
       // Setup event handlers.
@@ -48,7 +48,7 @@
         }
 
         this.canvasOffset = $(this.canvas).offset();
-        
+
         this.scratch = true;
         this._scratchFunc(e, 'Down');
       }, this))
@@ -173,9 +173,9 @@
     _scratchFunc: function (e, event) {
       e.pageX = Math.floor(e.pageX - this.canvasOffset.left);
       e.pageY = Math.floor(e.pageY - this.canvasOffset.top);
-      
+
       this['_scratch' + event](e);
-      
+
       if (this.options.realtime || event === 'Up') {
         if (this.options['scratch' + event]) {
           this.options['scratch' + event].apply(this, [e, this._scratchPercent()]);
@@ -186,39 +186,44 @@
     _scratchPercent: function() {
       var hits = 0,
           imageData = this.ctx.getImageData(0,0, this.canvas.width, this.canvas.height);
-      
+
       for (var i=0, ii=imageData.data.length; i<ii; i=i+4) {
         if (imageData.data[i] === 0 && imageData.data[i+1] === 0 && imageData.data[i+2] === 0 && imageData.data[i+3] === 0) {
           hits++;
         }
       }
-      
+
       return (hits / this.pixels) * 100;
     },
 
     _scratchDown: function (e) {
       this.ctx.globalCompositeOperation = 'destination-out';
       this.ctx.lineJoin = 'round';
-      this.ctx.lineCap = 'round';
+      this.ctx.lineCap = 'square';
       this.ctx.strokeStyle = this.options.color;
       this.ctx.lineWidth = this.options.size;
-      
+
       //draw single dot in case of a click without a move
       this.ctx.beginPath();
-      this.ctx.arc(e.pageX, e.pageY, this.options.size/2, 0, Math.PI*2, true);
+      for (var i=0;i<3;i++){
+        for (var j=0;j<6;j++){
+          this.ctx.arc(e.pageX + j, e.pageY + j,1,j,Math.PI*6,false);
+          this.ctx.stroke();
+        }
+      }
       this.ctx.closePath();
       this.ctx.fill();
-      
+
       //start the path for a drag
       this.ctx.beginPath();
       this.ctx.moveTo(e.pageX, e.pageY);
     },
-    
+
     _scratchMove: function (e) {
       this.ctx.lineTo(e.pageX, e.pageY);
       this.ctx.stroke();
     },
-    
+
     _scratchUp: function () {
       this.ctx.closePath();
     }
@@ -306,11 +311,11 @@
         return;
       }
 
-      var simulatedEvent = document.createEvent('MouseEvent'); 
+      var simulatedEvent = document.createEvent('MouseEvent');
 
       simulatedEvent.initMouseEvent(
-        type, true, true, window, 1, 
-        first.screenX, first.screenY, first.clientX, first.clientY, 
+        type, true, true, window, 1,
+        first.screenX, first.screenY, first.clientX, first.clientY,
         false, false, false, false, 0/*left*/, null
       );
 
