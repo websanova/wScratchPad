@@ -221,11 +221,17 @@
       //start the path for a drag
       this.ctx.beginPath();
       this.ctx.moveTo(e.pageX, e.pageY);
+      
+      // force redraw to fix android browser bug
+      this.canvas.style.zIndex++;
     },
     
     _scratchMove: function (e) {
       this.ctx.lineTo(e.pageX, e.pageY);
       this.ctx.stroke();
+      
+      // force redraw to fix android browser bug
+      this.canvas.style.zIndex++;
     },
     
     _scratchUp: function () {
