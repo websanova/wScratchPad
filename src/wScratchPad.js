@@ -63,6 +63,15 @@
           this._scratchFunc(e, 'Up');
         }
       }, this));
+	  
+	  // Catch mouseup outside of image or outside of window
+	  // (might not fire in all browsers)
+	  $(document).mouseup($.proxy(function (e) {
+        if (this.scratch) {
+          this.scratch = false;
+          this._scratchFunc(e, 'Up');
+        }
+      }, this));
 
       // Run options
       this._setOptions();
