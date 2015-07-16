@@ -63,6 +63,15 @@
           this._scratchFunc(e, 'Up');
         }
       }, this));
+	  
+	  // Catch mouseup outside of image or outside of window
+	  // (might not fire in all browsers)
+	  $(document).mouseup($.proxy(function (e) {
+        if (this.scratch) {
+          this.scratch = false;
+          this._scratchFunc(e, 'Up');
+        }
+      }, this));
 
       // Run options
       this._setOptions();
@@ -212,11 +221,17 @@
       //start the path for a drag
       this.ctx.beginPath();
       this.ctx.moveTo(e.pageX, e.pageY);
+      
+      // force redraw to fix android browser bug
+      this.canvas.style.zIndex++;
     },
     
     _scratchMove: function (e) {
       this.ctx.lineTo(e.pageX, e.pageY);
       this.ctx.stroke();
+      
+      // force redraw to fix android browser bug
+      this.canvas.style.zIndex++;
     },
     
     _scratchUp: function () {
