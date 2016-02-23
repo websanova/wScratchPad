@@ -18,20 +18,23 @@ Available options with notes, the values here are the defaults.
 
 ```js
 $('#elem').wScratchPad({
-  size        : 5,          // The size of the brush/scratch.
-  bg          : '#cacaca',  // Background (image path or hex color).
-  fg          : '#6699ff',  // Foreground (image path or hex color).
-  realtime    : true,       // Calculates percentage in realitime.
-  scratchDown : null,       // Set scratchDown callback.
-  scratchUp   : null,       // Set scratchUp callback.
-  scratchMove : null,       // Set scratcMove callback.
-  cursor      : 'crosshair' // Set cursor.
+  size              : 5,          // The size of the brush/scratch.
+  bg                : '#cacaca',  // Background (image path or hex color).
+  fg                : '#6699ff',  // Foreground (image path or hex color).
+  realtime          : true,       // Calculates percentage in realtime.
+  realtimePerEvent  : 1,          // Calculate percentage per this number of events
+  scratchDown       : null,       // Set scratchDown callback.
+  scratchUp         : null,       // Set scratchUp callback.
+  scratchMove       : null,       // Set scratcMove callback.
+  cursor            : 'crosshair' // Set cursor.
 });
 ```
 
 Note on `realtime`, if set to `false` this will only send percentage calculations to the `scratchUp` and should be used to increase performance.
 
 Note on `bg` and `fg`, these can be eitehr a valid hex color beginning with `#` otherwise it will default to trying to set an image.
+
+`realtimePerEvent` option increases the realtime performance in exchange for percentage calculation accuracy. When `realtime` is set to `true`, percentage is not calculated on every event trigger but per `realtimePerEvent` number of events. This decreases the percentage calculation accuracy but improves the performance by `realtimePerEvent` number of times.
 
 ## Examples
 

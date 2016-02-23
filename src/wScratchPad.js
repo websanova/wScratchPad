@@ -48,7 +48,7 @@
         }
 
         this.canvasOffset = $(this.canvas).offset();
-        
+        this.realtimeEventCounter = 1;
         this.scratch = true;
         this._scratchFunc(e, 'Down');
       }, this))
@@ -56,12 +56,14 @@
         if (this.scratch) {
           this._scratchFunc(e, 'Move');
         }
+        this.realtimeEventCounter++;
       }, this))
       .mouseup($.proxy(function (e) {
         if (this.scratch) {
           this.scratch = false;
           this._scratchFunc(e, 'Up');
         }
+        this.realtimeEventCounter = 1;
       }, this));
 
       // Run options
@@ -176,7 +178,7 @@
       
       this['_scratch' + event](e);
       
-      if (this.options.realtime || event === 'Up') {
+      if ( ( this.options.realtime && this.realtimeEventCounter % this.options.realtimePerEvent === 0 ) || event === 'Up') {
         if (this.options['scratch' + event]) {
           this.options['scratch' + event].apply(this, [e, this._scratchPercent()]);
         }
@@ -275,19 +277,20 @@
   };
 
   $.fn.wScratchPad.defaults = {
-    size        : 5,          // The size of the brush/scratch.
-    bg          : '#cacaca',  // Background (image path or hex color).
-    fg          : '#6699ff',  // Foreground (image path or hex color).
-    realtime    : true,       // Calculates percentage in realitime
-    scratchDown : null,       // Set scratchDown callback.
-    scratchUp   : null,       // Set scratchUp callback.
-    scratchMove : null,       // Set scratcMove callback.
-    cursor      : 'crosshair' // Set cursor.
+    size                : 5,          // The size of the brush/scratch.
+    bg                  : '#cacaca',  // Background (image path or hex color).
+    fg                  : '#6699ff',  // Foreground (image path or hex color).
+    realtime            : true,       // Calculates percentage in realtime
+    realtimePerEvent    : 1,          // Calculate percentage per this number of pixels scratched (the higher the better performance)
+    scratchDown         : null,       // Set scratchDown callback.
+    scratchUp           : null,       // Set scratchUp callback.
+    scratchMove         : null,       // Set scratcMove callback.
+    cursor              : 'crosshair' // Set cursor.
   };
 
   $.fn.bindMobileEvents = function () {
     $(this).on('touchstart touchmove touchend touchcancel', function (event) {
-      var touches = (event.changedTouches || event.originalEvent.targetTouches),
+      var touches = (event.originalEvent.changedTouches || event.originalEvent.targetTouches),
           first = touches[0],
           type = '';
 
