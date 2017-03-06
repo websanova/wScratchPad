@@ -76,8 +76,7 @@
     },
 
     reset: function () {
-      var _this = this,
-          width = Math.ceil(this.$el.innerWidth()),
+      var width = Math.ceil(this.$el.innerWidth()),
           height = Math.ceil(this.$el.innerHeight()),
           devicePixelRatio = window.devicePixelRatio || 1;
 
@@ -126,7 +125,7 @@
 
             self.ctx.drawImage(frame, 0, 0, width, height);
             self.$img.show();
-          }
+          };
 
           frame.crossOrigin = '';
           frame.src = this.options.fg;

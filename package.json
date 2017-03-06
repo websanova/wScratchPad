@@ -13,10 +13,11 @@
     "email": "rob@websanova.com",
     "url": "http://websanova.com"
   },
-  "homepage" : "http://wscratchpad.websanova.com",
+  "homepage": "http://wscratchpad.websanova.com",
   "license": "MIT, GPL",
   "dependencies": {
-    "grunt-contrib-uglify": "",
-    "grunt-contrib-jshint": ""
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "",
+    "grunt-contrib-uglify": ""
   }
 }
