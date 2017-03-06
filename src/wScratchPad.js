@@ -203,7 +203,7 @@
     _scratchDown: function (e) {
       this.ctx.globalCompositeOperation = 'destination-out';
       this.ctx.lineJoin = 'round';
-      this.ctx.lineCap = 'round';
+      this.ctx.lineCap = 'square';
       this.ctx.strokeStyle = this.options.color;
       this.ctx.lineWidth = this.options.size;
       
