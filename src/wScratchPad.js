@@ -76,8 +76,7 @@
     },
 
     reset: function () {
-      var _this = this,
-          width = Math.ceil(this.$el.innerWidth()),
+      var width = Math.ceil(this.$el.innerWidth()),
           height = Math.ceil(this.$el.innerHeight()),
           devicePixelRatio = window.devicePixelRatio || 1;
 
@@ -119,13 +118,17 @@
         }
         else {
           // Have to load image before we can use it.
-          $(new Image())
-          .attr('crossOrigin', '')
-          .attr('src', this.options.fg)
-          .load(function () {
-            _this.ctx.drawImage(this, 0, 0, width, height);
-            _this.$img.show();
-          });
+          var self = this;
+          var frame = new Image();
+
+          frame.onload = function() {
+
+            self.ctx.drawImage(frame, 0, 0, width, height);
+            self.$img.show();
+          };
+
+          frame.crossOrigin = '';
+          frame.src = this.options.fg;
         }
       }
     },
@@ -199,7 +202,7 @@
     _scratchDown: function (e) {
       this.ctx.globalCompositeOperation = 'destination-out';
       this.ctx.lineJoin = 'round';
-      this.ctx.lineCap = 'round';
+      this.ctx.lineCap = 'square';
       this.ctx.strokeStyle = this.options.color;
       this.ctx.lineWidth = this.options.size;
       
