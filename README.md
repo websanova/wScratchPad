@@ -9,7 +9,7 @@ A jQuery plugin to mimic a scratch card or pad behaviour.  Allowing you to scrat
 ## Related Plugins
 
 * [wPaint](http://wpaint.websanova.com) - Simple paint drawing plugin.
-* [wColorPicker](http://wcolorpicker.websanova.com) - Color pallette seleciton plugin.
+* [wColorPicker](http://wcolorpicker.websanova.com) - Color pallette selection plugin.
 
 
 ## Settings
@@ -31,7 +31,7 @@ $('#elem').wScratchPad({
 
 Note on `realtime`, if set to `false` this will only send percentage calculations to the `scratchUp` and should be used to increase performance.
 
-Note on `bg` and `fg`, these can be eitehr a valid hex color beginning with `#` otherwise it will default to trying to set an image.
+Note on `bg` and `fg`, these can be either a valid hex color beginning with `#` otherwise it will default to trying to set an image.
 
 ## Examples
 
