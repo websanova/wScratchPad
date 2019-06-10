@@ -122,7 +122,7 @@
           $(new Image())
           .attr('crossOrigin', '')
           .attr('src', this.options.fg)
-          .load(function () {
+          .on('load', function () {
             _this.ctx.drawImage(this, 0, 0, width, height);
             _this.$img.show();
           });
