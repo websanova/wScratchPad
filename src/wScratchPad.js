@@ -39,7 +39,7 @@
 
       // Setup event handlers.
       this.$scratchpad
-      .mousedown($.proxy(function (e) {
+      .on('mousedown', $.proxy(function (e) {
 
         // If disabled we just return true which menas
         // our our this.scratch will remain as false.
@@ -52,12 +52,12 @@
         this.scratch = true;
         this._scratchFunc(e, 'Down');
       }, this))
-      .mousemove($.proxy(function (e) {
+      .on('mousemove', $.proxy(function (e) {
         if (this.scratch) {
           this._scratchFunc(e, 'Move');
         }
       }, this))
-      .mouseup($.proxy(function (e) {
+      .on('mouseup', $.proxy(function (e) {
         if (this.scratch) {
           this.scratch = false;
           this._scratchFunc(e, 'Up');
@@ -66,7 +66,7 @@
 	  
 	  // Catch mouseup outside of image or outside of window
 	  // (might not fire in all browsers)
-	  $(document).mouseup($.proxy(function (e) {
+	  $(document).on('mouseup', $.proxy(function (e) {
         if (this.scratch) {
           this.scratch = false;
           this._scratchFunc(e, 'Up');
@@ -131,7 +131,7 @@
           $(new Image())
           .attr('crossOrigin', '')
           .attr('src', this.options.fg)
-          .load(function () {
+          .on('load', function () {
             _this.ctx.drawImage(this, 0, 0, width, height);
             _this.$img.show();
           });
